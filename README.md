@@ -1,2 +1,2 @@
-# AI_algorithms
-AI algorithms on ROS Melodic Morenia and Gozebo bot. (CSE 545)
+# AI algorithms
+Artificial Intelligence algorithms tried on ROS Melodic Morenia with Gazebo bot simulator.
