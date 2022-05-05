@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to CSE 571 Spring 2022 - Project 3! &mdash; CSE 571 - Project 3  documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Homework 3 - Programming Section" href="hw3.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="#" class="icon icon-home"> CSE 571 - Project 3
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hw3.html">Homework 3 - Programming Section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hw3.html#instructions">Instructions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hw3.html#api">API</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">CSE 571 - Project 3</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home"></a> &raquo;</li>
+      <li>Welcome to CSE 571 Spring 2022 - Project 3!</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="welcome-to-cse-571-spring-2022-project-3">
+<h1>Welcome to CSE 571 Spring 2022 - Project 3!<a class="headerlink" href="#welcome-to-cse-571-spring-2022-project-3" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<p class="caption"><span class="caption-text">Contents:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="hw3.html">Homework 3 - Programming Section</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#late-submission-policy">Late Submission Policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#grading">Grading</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw3.html#instructions">Instructions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#setting-up-hw3-folder">Setting up <strong>HW3</strong> Folder</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#environment-setting">Environment Setting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#basic-setup">Basic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#task-1">Task 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#task-2">Task 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#task-3">Task 3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#submission-configuration">Submission configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#submission-instructions">Submission Instructions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#environment-visualization">Environment Visualization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#tips-and-suggestions">Tips and Suggestions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#watch-it-learn">Watch it learn</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hw3.html#api">API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#class-state">class State</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html#class-helper">class Helper</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>This API covers only the part of code that you will have to use to complete this project. You are free to explore the code by looking into each file separately, but do not change anything other than refinement.py, domain.pddl, and problem.pddl.</p>
+<div class="section" id="class-state">
+<h2>class State<a class="headerlink" href="#class-state" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="problem.State">
+<em class="property">class </em><code class="descclassname">problem.</code><code class="descname">State</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>orientation</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#State"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.State" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class defines the state of the TurtleBot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<em>float</em>) – current x-cordinate of turtlebot</li>
+<li><strong>y</strong> (<em>float</em>) – current x-cordinate of turtlebot</li>
+<li><strong>orientation</strong> (<em>str</em>) – current orientation of turtlebot, can be either NORTH, SOUTH, EAST, WEST</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="problem.State.get_orientation">
+<code class="descname">get_orientation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#State.get_orientation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.State.get_orientation" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>str</dt>
+<dd>The direction (orientation) of the state.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.State.get_x">
+<code class="descname">get_x</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#State.get_x"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.State.get_x" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>int</dt>
+<dd>The x-value of the state (-1 if the state is invalid).</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.State.get_y">
+<code class="descname">get_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#State.get_y"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.State.get_y" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>int</dt>
+<dd>The y-value of the state (-1 if the state is invalid).</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="class-helper">
+<h2>class Helper<a class="headerlink" href="#class-helper" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="problem.Helper">
+<em class="property">class </em><code class="descclassname">problem.</code><code class="descname">Helper</code><a class="reference internal" href="_modules/problem.html#Helper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper" title="Permalink to this definition">¶</a></dt>
+<dd><p>A state here is represented as a dictionary defining the location of books, if they have been placed, 
+location of turtlebot and which book is present in the basket.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><dl class="first docutils">
+<dt>{</dt>
+<dd><p class="first">“robot”:  { “x” : 0, “y” : 0, “orientation” : “EAST” },</p>
+<p>“basket”: None,</p>
+<p>“book_1”:  { “x” : 2, “y” : 1.5, “placed” : False },</p>
+<p>“book_2”: ..</p>
+<p>.</p>
+<p>.</p>
+<p class="last">“trolly_1”: { “x” : 3, “y” : 3 },</p>
+</dd>
+</dl>
+<p class="last">}</p>
+</dd>
+</dl>
+<dl class="method">
+<dt id="problem.Helper.execute_action">
+<code class="descname">execute_action</code><span class="sig-paren">(</span><em>action</em>, <em>action_params</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.execute_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.execute_action" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function executes the given action in the state being maintained by the server.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>action</strong> (<em>str</em>) – an str representing the action to perform. This action is a valid action as defined in the action_config.json file.</li>
+<li><strong>action_params</strong> (<em>dict</em>) – a dictionary representing the parameters associated with the action as defined in the action_config.json file.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><cite>action=’careful_pick’, action_params={‘book_name’:’book_1’}</cite></dd>
+</dl>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if action was successful and returns false otherwise</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Next state  represented as dictionary</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean, dictionary</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>action is a value defined in the action_config.json</p>
+<p>action_params is a dictionary specifying the parameters associated with the action as defined in</p>
+<p class="last">action_config.json</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.get_all_actions">
+<code class="descname">get_all_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_all_actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_all_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns all the actions that turtleBot can perform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">A comma separated list of actions turtlebot can perform</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list of strings</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.get_current_state">
+<code class="descname">get_current_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_current_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_current_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls get_initial_state service to recive the initial state of the turtlebot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">State Dictionary</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.get_reward">
+<code class="descname">get_reward</code><span class="sig-paren">(</span><em>state</em>, <em>action</em>, <em>next_state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_reward"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_reward" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function which reward for executing action in the given state and resulting in the next_state.
+This is equivalent to R(s,a,s’) formulation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>state</strong> (<em>dictonary</em>) – state where the action “action” is taken</li>
+<li><strong>action</strong> (<em>str</em>) – “action” being taken in state</li>
+<li><strong>next_state</strong> (<em>dictionary</em>) – resulting state when action “action” performed in state “state”</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">The reward for executing action given s and s’ as usually expressed in R(s,a,s’)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first">float</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first last">ServiceException: When call to rospy fails.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.is_terminal_state">
+<code class="descname">is_terminal_state</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.is_terminal_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.is_terminal_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function accepts a dictionary representing the state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>state</strong> (<em>dictionary</em>) – State represented as a dictionary.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if state is terminal state and returns false if state is not terminal state</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">Boolean</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.reset_world">
+<code class="descname">reset_world</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.reset_world"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.reset_world" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function resets the running server state to the initial state</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">None</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">This method works only in headless mode. It resets the state of the running server to the initial state. Use this at the start of each episode.</p>
+</div>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="hw3.html" class="btn btn-neutral float-right" title="Homework 3 - Programming Section" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, AAIR Lab, ASU.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

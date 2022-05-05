@@ -1,0 +1,39 @@
+.. You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Welcome to CSE 571 Spring 2022 - Project 3!
+===========================================
+
+.. toctree::
+   :maxdepth: -1
+   :caption: Contents:
+
+   hw3
+
+.. only:: html
+
+
+This API covers only the part of code that you will have to use to complete this project. You are free to explore the code by looking into each file separately, but do not change anything other than refinement.py, domain.pddl, and problem.pddl.
+
+====================================================
+class State
+====================================================
+.. moduleauthor:: AAIR Lab, ASU <aair.lab@asu.edu>
+
+.. automodule:: problem
+	:noindex:
+
+.. autoclass:: State
+   :members:
+
+====================================================
+class Helper
+====================================================
+.. moduleauthor:: AAIR Lab, ASU <aair.lab@asu.edu>
+
+.. automodule:: problem
+	:noindex:
+
+.. autoclass:: Helper
+   :members:
+

@@ -1,0 +1,7 @@
+uint32 dimension_x
+uint32 dimension_y
+uint32 obstacles
+uint32 seed
+string env
+---
+uint32 done

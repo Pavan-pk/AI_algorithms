@@ -1,0 +1,972 @@
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSE 571 - Spring 2022 - P1 &mdash; CSE 571 Spring 2022- P1</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Welcome to CSE 571 Spring 2022 - Programming Project 1!" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> CSE 571 - P1
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CSE 571 - Spring 2022 - P1</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#plagiarism-warning">Plagiarism Warning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#programming-project-1-search">Programming Project 1 - Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setting-up-the-hw1-directory">Setting up the <strong>hw1</strong> Directory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#environment-description">Environment Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#implementing-search-algorithms">Implementing Search Algorithms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-your-implementation">Testing your Implementation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#search-py">search.py</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#checking-execution-on-turtlebot3">Checking Execution on Turtlebot3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-test-cases">Using Test Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#preparing-your-submission-to-submit-on-canvas">Preparing your Submission to Submit on Canvas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#submitting-your-homework">Submitting Your Project</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tips-and-suggestions">Tips and Suggestions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hints-for-designing-the-extra-credit-heuristic">Hints for Designing the Extra Credit Heuristic</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#api">API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#class-state">class State</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-node">class Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-priorityqueue">class PriorityQueue:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#class-helper">class Helper</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">CSE 571 - P1</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>CSE 571 - Spring 2022 - P1</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="cse-571-spring-2022-p1">
+<h1>CSE 571 - Spring 2022 - P1<a class="headerlink" href="#cse-571-spring-2022-p1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="plagiarism-warning">
+<h2>Plagiarism Warning<a class="headerlink" href="#plagiarism-warning" title="Permalink to this headline">¶</a></h2>
+<p>Powerful copy-detection systems will be used as part of grading, so please <strong>DO NOT</strong> submit/use any piece of code that is not <strong>your own</strong> work. These systems can easily catch instances where users change variable names, etc. from copied code.</p>
+<p>If you are stuck at any point, you can approach the professor or TA for help.</p>
+</div>
+<div class="section" id="programming-project-1-search">
+<h2>Programming Project 1 - Search<a class="headerlink" href="#programming-project-1-search" title="Permalink to this headline">¶</a></h2>
+<p>Welcome to Programming project 1 for CSE 571 - Spring 2022.</p>
+<p>This document contains several instructions to help you with the running
+and submitting the project.</p>
+</div>
+<div class="section" id="setting-up-the-hw1-directory">
+<h2>Setting up the <strong>hw1</strong> Directory<a class="headerlink" href="#setting-up-the-hw1-directory" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">We assume that you have completed the setup as instructed using the Virtual Machine provided for Programming Project 1 on Canvas. The provided virtual machine already contains the <code class="code docutils literal notranslate"><span class="pre">hw1</span></code> directory in <code class="code docutils literal notranslate"><span class="pre">~/catkin_ws/src/</span></code>.</p>
+</li>
+<li><p class="first">If you need to access the “hw1” directory separately, you can also download the “hw1.zip” file from Canvas and unzip it.
+Copy the <code class="code docutils literal notranslate"><span class="pre">hw1</span></code> folder that was unzipped to <code class="code docutils literal notranslate"><span class="pre">~/catkin_ws/src/</span></code>.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cp -r &lt;download_path&gt;/hw1/ ~/catkin_ws/src/
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Change the permission of all Python scripts to make them executable.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>chmod u+x ~/catkin_ws/src/hw1/scripts/*.py
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Run catkin_make from your catkin workspace.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/catkin_ws <span class="o">&amp;&amp;</span> catkin_make
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Source <cite>setup.bash</cite>.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> ~/catkin_ws/devel/setup.bash
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Set up the environments.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/catkin_ws/src/hw1/ <span class="o">&amp;&amp;</span> ./env_setup.sh
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Useful tip you can use throughtout the project:
+If you ever run into issues and need to kill the running Gazebo or roscore processes, run the following command.
+You can also use this command when the gazebo opens up but the Turtlebot doesn’t move.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> ~/catkin_ws/src/hw1/ <span class="o">&amp;&amp;</span> ./hw1_kill.sh
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="environment-description">
+<h2>Environment Description<a class="headerlink" href="#environment-description" title="Permalink to this headline">¶</a></h2>
+<p><strong>Environment 1 - Can World</strong></p>
+<p>The image below shows an example of the can environment that the Turtlebot3 robot operates in.
+The goal is the red can; all other cans are obstacles that need to be avoided.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/can.png"><img alt="A sample can world" src="_images/can.png" style="width: 601.0px; height: 384.0px;" /></a>
+</div>
+<p><strong>Environment 2 - Cafe World</strong></p>
+<p>The image below shows an example of the cafe environment that the Turtlebot3 robot operates in.
+The goal is the food placed on the kitchen counter; all the tables are obstacles that need to be avoided.</p>
+<div class="figure">
+<a class="reference internal image-reference" href="_images/cafe.png"><img alt="A sample cafe world" src="_images/cafe.png" style="width: 593.0px; height: 208.0px;" /></a>
+</div>
+<p>Some of the terms that we use throughout the programming project for both the environments are:</p>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>Grid Dimensions: Size of the square grid.</dt>
+<dd><div class="first last admonition note">
+<p class="first admonition-title">Note</p>
+<p>Actual grid size used for navigation is different from what is seen in Gazebo environment. Each of the square seen in Gazebo is divided into 4 equal squares.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><div class="first last figure" id="id1">
+<img alt="_images/grid.png" src="_images/grid.png" />
+<p class="caption"><span class="caption-text">Fig 1. Grid visible in Gazebo</span></p>
+</div>
+</td>
+<td><div class="first last figure" id="id2">
+<img alt="_images/grid_actual.png" src="_images/grid_actual.png" />
+<p class="caption"><span class="caption-text">Fig 2. Actual navigation grid</span></p>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p class="last">Hence, if you have to go from point A to B in Gazebo environment using <code class="code docutils literal notranslate"><span class="pre">MoveF</span></code> action, you will have to give <code class="code docutils literal notranslate"><span class="pre">MoveF</span></code> command twice. If you give the <code class="code docutils literal notranslate"><span class="pre">MoveF</span></code> command once, the TurtleBot will stop at T.</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">Goal: A can of red color (for Can World), and food on the kitchen counter (for Cafe World).</p>
+</li>
+<li><p class="first">Obstacles: Smaller cans obstructing the TurtleBot’s path in Can World, and tables obstructing the TurtleBot’s path in Cafe World.</p>
+</li>
+<li><dl class="first docutils">
+<dt>Actions: Actions includes {<code class="code docutils literal notranslate"><span class="pre">MoveF</span></code>, <code class="code docutils literal notranslate"><span class="pre">TurnCW</span></code>, <code class="code docutils literal notranslate"><span class="pre">TurnCCW</span></code>}. Move actions move the turtlebot forward along an edge, and Turn actions rotate it clockwise or counterclockwise.</dt>
+<dd><ul class="first last simple">
+<li>Cost of the <code class="code docutils literal notranslate"><span class="pre">MoveF</span></code> action is 1.</li>
+<li>Cost of the <code class="code docutils literal notranslate"><span class="pre">TurnCW</span></code> and <code class="code docutils literal notranslate"><span class="pre">TurnCCW</span></code> actions is 2.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>State:  State of the Turtlebot represented as (x, y, <img class="math" src="_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/>) where x and y are coordinates, <img class="math" src="_images/math/c2f31c22645274c375eff7920cfdfdc18d60341f.png" alt="\phi"/> is an orientation in {NORTH, SOUTH, EAST, WEST}.</dt>
+<dd><div class="first last figure">
+<a class="reference internal image-reference" href="_images/orientation.png"><img alt="A sample maze" src="_images/orientation.png" style="width: 255.5px; height: 174.3px;" /></a>
+</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="implementing-search-algorithms">
+<h2>Implementing Search Algorithms<a class="headerlink" href="#implementing-search-algorithms" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Modify the <code class="code docutils literal notranslate"><span class="pre">graph_search()</span></code>, <code class="code docutils literal notranslate"><span class="pre">f_gbfs()</span></code>, <code class="code docutils literal notranslate"><span class="pre">f_ucs()</span></code>, <code class="code docutils literal notranslate"><span class="pre">f_astar()</span></code>, and <code class="code docutils literal notranslate"><span class="pre">compute_g()</span></code> methods in the <cite>search.py</cite> file. We have provided a basic template where you should write your code.</li>
+<li>Do not modify any other file. Make all the changes you need strictly in <cite>search.py</cite> file only. You can add more functions in <cite>search.py</cite>, if needed.</li>
+<li>You can use Visual Studio Code, Sublime Text, Gedit, or any other editor that you’re comfortable with to implement.</li>
+<li>Unless otherwise specified, use the Manhattan heuristic whenever you need to return a heuristic value.</li>
+<li><dl class="first docutils">
+<dt>Modifying evaluate.py</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Do not modify the function signatures of existing methods.</dt>
+<dd><ul class="first last">
+<li>Remove the <code class="code docutils literal notranslate"><span class="pre">raise</span> <span class="pre">NotImplementedError</span></code> code block and replace it with the correct code to the compute the g-value or f-value and return this value.</li>
+<li>The returned value must be a positive integer or 0.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="code docutils literal notranslate"><span class="pre">graph_search()</span></code> has 2 parameters passed to it.</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>algorithm - A string that represents which algorithm is running. This is passed as a command line argument to the program.</dt>
+<dd><dl class="first last docutils">
+<dt>The required algorithms you need to handle are:</dt>
+<dd><ol class="first last arabic">
+<li>bfs - Breadth First Search</li>
+<li>ucs - Uniform Cost Search</li>
+<li>gbfs - Greedy <strong>Best</strong> First Search</li>
+<li>astar - A* Search</li>
+<li>custom-astar - (Extra credit) A* with a custom heuristic.</li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li>time_out - This is used for timing out the code if it takes too long to run. We use it for autograding, and we use a default value of 300 seconds. You can ignore it for now.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="code docutils literal notranslate"><span class="pre">compute_g()</span></code> has 3 parameters passed to it.</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>algorithm - A string that represents which algorithm is running. This is passed as a command line argument to the program.</dt>
+<dd><dl class="first last docutils">
+<dt>The required algorithms you need to handle are:</dt>
+<dd><ol class="first last arabic">
+<li>bfs - Breadth First Search</li>
+<li>ucs - Uniform Cost Search</li>
+<li>gbfs - Greedy <strong>Best</strong> First Search</li>
+<li>astar - A* Search</li>
+<li>custom-astar - (Extra credit) A* with a custom heuristic.</li>
+</ol>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>node - A Node (<cite>node.py</cite>) object that is being evaluated in the search</dt>
+<dd>tree. Note that each node has all its fields already initialized prior
+to calling these functions. More information about the Node class can
+be found in the API located at the end of this document..</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>goal_state - A State (<cite>problem.py</cite>) object that represents the goal state.</dt>
+<dd>More information about the State class can be found in the API located
+at the end of this document.</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>All three of <code class="code docutils literal notranslate"><span class="pre">f_gbfs()</span></code>, <code class="code docutils literal notranslate"><span class="pre">f_ucs()</span></code>, and <code class="code docutils literal notranslate"><span class="pre">f_astar()</span></code> have 2 parameters passed to them.</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>node - A Node (<cite>node.py</cite>) object that is being evaluated in the search</dt>
+<dd>tree. Note that each node has all its fields already initialized prior
+to calling these functions. More information about the Node class can
+be found in the API located at the end of this document..</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>goal_state - A State (<cite>problem.py</cite>) object that represents the goal state.</dt>
+<dd>More information about the State class can be found in the API located
+at the end of this document.</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="testing-your-implementation">
+<h2>Testing your Implementation<a class="headerlink" href="#testing-your-implementation" title="Permalink to this headline">¶</a></h2>
+<p><strong>Follow these steps to locally test your implementation.</strong></p>
+<p>Fill in the necessary blocks in <cite>search.py</cite> by removing the <code class="code docutils literal notranslate"><span class="pre">raise</span> <span class="pre">NotImplementedError</span></code> and replacing it with your code.
+If you choose not to implement an algorithm (for example the extra credit work) simply leave the statement unchanged in
+<code class="code docutils literal notranslate"><span class="pre">compute_g()</span></code> for that algorithm and in <code class="code docutils literal notranslate"><span class="pre">f_&lt;algorithm&gt;()</span></code>.</p>
+<p>Once done, you need to execute <code class="code docutils literal notranslate"><span class="pre">rosrun</span> <span class="pre">hw1</span> <span class="pre">search.py</span></code> with the appropriate algorithm and the environment.
+For example, If you implemented <code class="code docutils literal notranslate"><span class="pre">compute_g()</span></code> and <code class="code docutils literal notranslate"><span class="pre">f_ucs()</span></code> for “ucs” and “cafeWorld” environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun hw1 search.py --algorithm ucs --env cafeWorld
+</pre></div>
+</div>
+<p>This will also post plenty of output to your console giving you some valuable information about your implementation including
+any errors that were encountered. If the error field is None then that means that your implementation ran without issues.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">==========================</span>
+Dimension..........: <span class="m">5</span>
+Obstacles..........: <span class="m">0</span>
+Seed...............: <span class="m">1599124437</span>
+Environment........: cafeWorld
+Algorithm..........: ucs
+Error..............: NotImplementedError
+Time Taken.........: <span class="m">0</span>.01
+Nodes expanded.....: <span class="m">0</span>
+Plan Length........: <span class="m">0</span>
+Plan...............: <span class="o">[]</span>
+</pre></div>
+</div>
+<p>In the code block above, the Error output is not None. This means that there were errors encountered and you would need to debug
+the implementation. You can modify any file to debug your code, however, your final test code should only modify <cite>search.py</cite> and
+leave all the other files untouched.</p>
+<div class="section" id="search-py">
+<h3>search.py<a class="headerlink" href="#search-py" title="Permalink to this headline">¶</a></h3>
+<p><cite>search.py</cite> contains several options that you can specify to change the world generated so that you can test different worlds.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun hw1 search.py -h
+
+usage: search.py <span class="o">[</span>-h<span class="o">]</span> <span class="o">[</span>--dimension DIMENSION<span class="o">]</span> <span class="o">[</span>--obstacles OBSTACLES<span class="o">]</span>
+             <span class="o">[</span>--seed SEED<span class="o">]</span>
+             <span class="o">[</span>--algorithm <span class="o">{</span>all,bfs,ucs,gbfs,astar,custom-astar<span class="o">}]</span>
+             <span class="o">[</span>--submit<span class="o">]</span> <span class="o">[</span>--output-file OUTPUT_FILE<span class="o">]</span> <span class="o">[</span>--env ENV<span class="o">]</span>
+
+optional arguments:
+-h, --help            show this <span class="nb">help</span> message and <span class="nb">exit</span>
+--dimension DIMENSION
+                        The dimension <span class="s1">&#39;nxn&#39;</span> of the n x n grid.
+--obstacles OBSTACLES
+                        The number of obstacles in the grid.
+--seed SEED           The random seed
+--algorithm <span class="o">{</span>all,bfs,ucs,gbfs,astar,custom-astar<span class="o">}</span>
+                        The algorithm to run
+--submit              Run the experiments required <span class="k">for</span> submission
+--output-file OUTPUT_FILE
+                        Store the output in the specified file
+--env ENV             Choose environment b/w cafeWorld and canWorld
+</pre></div>
+</div>
+<p>For example, to generate a “canWorld” with a dimension of 5x5 and 2 obstacles and test
+with the “ucs” algorithm, enter the following in the terminal.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun hw1 search.py --dimension 5x5 --obstacles <span class="m">2</span> --algorithm ucs --env canWorld
+</pre></div>
+</div>
+<p>The output contains all data to reproduce the results. You can use <code class="code docutils literal notranslate"><span class="pre">--algorithm</span> <span class="pre">all</span></code> to run all the algorithms.</p>
+</div>
+</div>
+<div class="section" id="checking-execution-on-turtlebot3">
+<h2>Checking Execution on Turtlebot3<a class="headerlink" href="#checking-execution-on-turtlebot3" title="Permalink to this headline">¶</a></h2>
+<p>Once you have an implementation working, you can run the solution found by your algorithm on
+Gazebo. To do this, you need to provide an additional argument that instructs <cite>search.py</cite>
+to save the results to an output file. Refer the command below and use it for appropriate dimensions,
+obstacles, algorithm, and environment.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun hw1 search.py --output-file /tmp/test.csv
+</pre></div>
+</div>
+<p>The above command will run the default algorithm (all) along with the default
+dimension, obstacles and seed for the world and store the output in
+<code class="code docutils literal notranslate"><span class="pre">/tmp/test.csv</span></code>. You can open this file in software like Excel or a simple
+text editor like Sublime Text.</p>
+<p>To run Gazebo, execute</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun hw1 gazebo.py --input-file /tmp/test.csv
+</pre></div>
+</div>
+<p>This will open Gazebo and run each solution in the specified file.</p>
+<p>If you only want to run a single solution in the specified file (will run faster), you can pick
+which solution to execute by specifying the line number that the solution
+occurs in the solution file (lines are numbered starting with 1).</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun hw1 gazebo.py --input-file /tmp/test.csv --line <span class="m">3</span>
+</pre></div>
+</div>
+<p>This will run the solution occuring at line 3 (provided the file has 3 lines)
+and will exit after that.</p>
+</div>
+<div class="section" id="using-test-cases">
+<h2>Using Test Cases<a class="headerlink" href="#using-test-cases" title="Permalink to this headline">¶</a></h2>
+<p>We have also provided a list of test cases <code class="code docutils literal notranslate"><span class="pre">~/catkin_ws/src/hw1/hw1_testcases.csv</span></code> using which you can verify the correctness of your implementation. Each entry is similar to the output generated when your algorithm runs successfully.</p>
+<p>Each row has the following columns:</p>
+<blockquote>
+<div>Dimension, Obstacles, Seed, Algorithm, Time, Nodes Expanded, Plan Length, Error, Plan, Environment</div></blockquote>
+<p>To verify your output use the parameters exactly same as given in a row and execute that using your algorithm.</p>
+<p>For eg: the first row is:</p>
+<blockquote>
+<div>4x4, 2, 200, bfs, 1.44, 347, 14, None, MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_
+MoveF_MoveF_MoveF, canWorld</div></blockquote>
+<p>Here the dimension is 4x4, number of obstacles are 2, random seed is 200, algorithm is bfs, and the environment is canWorld.</p>
+<p>To verify your output, run the command:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun hw1 search.py --dimension 4x4 --obstacles <span class="m">2</span> --seed <span class="m">200</span> --algorithm bfs --env canWorld
+</pre></div>
+</div>
+<p>The output will look something like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ rosrun hw1 search.py --dimension 4x4 --obstacles <span class="m">2</span> --seed <span class="m">200</span> --algorithm bfs --env canWorld
+Ready!
+World <span class="nv">generated</span>
+<span class="o">==========================</span>
+Dimension..........: 4x4
+Obstacles..........: <span class="m">2</span>
+Seed...............: <span class="m">200</span>
+Environment........: canWorld
+Algorithm..........: bfs
+Error..............: None
+Time Taken.........: <span class="m">1</span>.80
+Nodes expanded.....: <span class="m">347</span>
+Plan Length........: <span class="m">14</span>
+Plan...............: <span class="o">[</span><span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;TurnCCW&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span>, <span class="s1">&#39;MoveF&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>Note that the time taken will not match as it depends on your system configuration, and many other things. But all other values should match for the testcase to pass.
+In the <code class="code docutils literal notranslate"><span class="pre">hw1_testcases.csv</span></code> file, we concatenated all the actions, with each action separated by an underscore (_).</p>
+</div>
+<div class="section" id="preparing-your-submission-to-submit-on-canvas">
+<h2>Preparing your Submission to Submit on Canvas<a class="headerlink" href="#preparing-your-submission-to-submit-on-canvas" title="Permalink to this headline">¶</a></h2>
+<p>1. When you have finished implementing all the algorithms you need to use the submit
+mode of <cite>search.py</cite>. It’ll work for either/both environments you tried.</p>
+<p><strong>Run the following command to prepare the submission files:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rosrun hw1 search.py --submit
+</pre></div>
+</div>
+<p>This will run 100 different world combinations and each one of them will be run
+with a time limit of 5 mins (300 seconds). A file called <cite>hw1_results.csv</cite> will
+be created in the <cite>~/catkin_ws/src/hw1/scripts/</cite> directory which will contain
+results of the run. <strong>HINT</strong>: Make sure that there are no TimeoutErrors in the
+results. If there are, then its likely your implementation is incorrect.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The submission runs several tests so make sure you run this command plenty
+of time before the submission deadline.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Submit mode will not produce Debug output. Instead <code class="code docutils literal notranslate"><span class="pre">hw1_results.csv</span></code>
+will contain the Debug output in a .csv format.</p>
+</div>
+<p>Execute the following to ensure that the <code class="code docutils literal notranslate"><span class="pre">hw1_results.csv</span></code> file was created.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ls ~/catkin_ws/src/hw1/scripts/
+/home/cse571/catkin_ws/src/hw1/scripts/hw1_results.csv
+</pre></div>
+</div>
+<p>2. The next step is to create the plots. You can open the <cite>hw1_results.csv</cite> in
+software like Excel or write your own code to process the file and generate the
+required plots (see the question on Canvas for the description of what needs
+to be plotted).</p>
+<p>Add all the plots to a pdf with each clearly marked with the correct task/question number.</p>
+<div class="section" id="submitting-your-homework">
+<h3>Submitting Your Project<a class="headerlink" href="#submitting-your-homework" title="Permalink to this headline">¶</a></h3>
+<p>You now need to submit 3 files on Canvas. The three files should be named as:</p>
+<ol class="arabic simple">
+<li>&lt;first name&gt;_&lt;asu_id&gt;_p1_plots.pdf</li>
+<li>&lt;first name&gt;_&lt;asu_id&gt;_p1_results.csv</li>
+<li>&lt;first name&gt;_&lt;asu_id&gt;_p1_search.py</li>
+</ol>
+<p>Upload the three files on Canvas. Files with incorrect names will not be graded.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please make sure that you submitted all three files. Canvas may show an assignment as submitted even with only one file upload also.</p>
+</div>
+</div>
+</div>
+<div class="section" id="tips-and-suggestions">
+<h2>Tips and Suggestions<a class="headerlink" href="#tips-and-suggestions" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>The API section below contains all getter and setter functions required to complete this project.</li>
+<li>Test your algorithm with smaller grid or smaller number of obstacles to see if it works as expected.</li>
+<li>Since the obstacles and mazes are generated dynamically, sometimes it is possible that there is no path from initial state to goal state. If your algorithm returned empty action_list, check once if there is path from initial state to goal state.</li>
+<li>You need not start a new run to record running time if there is no path between initial state and goal state. The time taken for this case should also be considered while taking average of 5 runs.</li>
+<li>At times, the TurtleBot takes some time to perform an action, so wait for some time if no movement is visible.</li>
+<li>Check the Discussions on Canvas to see if the problem you are facing is already answered. If not, start a new discussion.</li>
+</ol>
+<div class="section" id="hints-for-designing-the-extra-credit-heuristic">
+<h3>Hints for Designing the Extra Credit Heuristic<a class="headerlink" href="#hints-for-designing-the-extra-credit-heuristic" title="Permalink to this headline">¶</a></h3>
+<p>In the section <strong>Environment Description</strong>, you will find that action costs are
+different for different actions.</p>
+<p>Remember the cost trade-off. Your heuristic must not be too expensive to compute.
+One extreme case is to run Breadth First Search from a state and return the plan length from
+that state as the heuristic value. This gives you a very good estimate, since
+you run Breadth First Search internally however the time to compute a single state’s
+heuristic value is quite large which makes it effectively useless since we could
+have just done a Breadth FS anyways. Doing Breadth First Search or any other of the implemented
+algorithms as the extra credit heuristic won’t get you extra credit!</p>
+</div>
+</div>
+<div class="section" id="api">
+<h2>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="class-state">
+<h3>class State<a class="headerlink" href="#class-state" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="problem.State">
+<em class="property">class </em><code class="descclassname">problem.</code><code class="descname">State</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>orientation</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#State"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.State" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class defines the state of the TurtleBot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<em>float</em>) – current x-cordinate of turtlebot</li>
+<li><strong>y</strong> (<em>float</em>) – current x-cordinate of turtlebot</li>
+<li><strong>orientation</strong> (<em>float</em>) – current orientation of turtlebot, can be either NORTH, SOUTH, EAST, WEST</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="method">
+<dt id="problem.State.get_orientation">
+<code class="descname">get_orientation</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#State.get_orientation"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.State.get_orientation" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>int</dt>
+<dd>The direction (orientation) of the state.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.State.get_x">
+<code class="descname">get_x</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#State.get_x"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.State.get_x" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>int</dt>
+<dd>The x-value of the state (-1 if the state is invalid).</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.State.get_y">
+<code class="descname">get_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#State.get_y"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.State.get_y" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>int</dt>
+<dd>The y-value of the state (-1 if the state is invalid).</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="class-node">
+<h3>class Node<a class="headerlink" href="#class-node" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="node.Node">
+<em class="property">class </em><code class="descclassname">node.</code><code class="descname">Node</code><span class="sig-paren">(</span><em>state</em>, <em>parent</em>, <em>depth</em>, <em>action</em>, <em>action_cost</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/node.html#Node"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node.Node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initializes the node data structure of the search tree.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>state: State</dt>
+<dd>The concrete state that this node represents.</dd>
+<dt>parent: State</dt>
+<dd>The parent node of this node.</dd>
+<dt>depth: int</dt>
+<dd>The depth of this node.</dd>
+<dt>action: Action</dt>
+<dd>The action from the parent node’s state that lead to this
+node.</dd>
+<dt>action_cost: int</dt>
+<dd>The cost of the specified action.</dd>
+</dl>
+</div></blockquote>
+<blockquote>
+<div>None</div></blockquote>
+<dl class="method">
+<dt id="node.Node.get_action">
+<code class="descname">get_action</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/node.html#Node.get_action"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node.Node.get_action" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>Action</dt>
+<dd>The action from the parent node’s concrete state that lead
+to this node’s concrete state.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.get_action_cost">
+<code class="descname">get_action_cost</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/node.html#Node.get_action_cost"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node.Node.get_action_cost" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>int</dt>
+<dd>The action cost of the action represented by this node.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.get_depth">
+<code class="descname">get_depth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/node.html#Node.get_depth"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node.Node.get_depth" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>int</dt>
+<dd>The depth of this node assuming unit-cost actions.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.get_parent">
+<code class="descname">get_parent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/node.html#Node.get_parent"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node.Node.get_parent" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>Node</dt>
+<dd>The parent node of this node.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.get_state">
+<code class="descname">get_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/node.html#Node.get_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node.Node.get_state" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>State</dt>
+<dd>The concrete state that this node represents.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="node.Node.get_total_action_cost">
+<code class="descname">get_total_action_cost</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/node.html#Node.get_total_action_cost"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#node.Node.get_total_action_cost" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>int</dt>
+<dd>The total cost to this node accounting for different action
+costs.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="class-priorityqueue">
+<h3>class PriorityQueue:<a class="headerlink" href="#class-priorityqueue" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="priority_queue.PriorityQueue">
+<em class="property">class </em><code class="descclassname">priority_queue.</code><code class="descname">PriorityQueue</code><a class="reference internal" href="_modules/priority_queue.html#PriorityQueue"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#priority_queue.PriorityQueue" title="Permalink to this definition">¶</a></dt>
+<dd><p>A class that implements the Priority Queue for search algorithms.</p>
+<p>This priority queue is a min-priority queue.</p>
+<p>Initializes this priority queue.</p>
+<dl class="method">
+<dt id="priority_queue.PriorityQueue.contains">
+<code class="descname">contains</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/priority_queue.html#PriorityQueue.contains"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#priority_queue.PriorityQueue.contains" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>state: State</dt>
+<dd>The state to be checked.</dd>
+</dl>
+</div></blockquote>
+<blockquote>
+<div><dl class="docutils">
+<dt>bool</dt>
+<dd>True if the state is present in the priority queue, False
+otherwise.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="priority_queue.PriorityQueue.is_empty">
+<code class="descname">is_empty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/priority_queue.html#PriorityQueue.is_empty"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#priority_queue.PriorityQueue.is_empty" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>bool</dt>
+<dd>True if the priority queue is empty, False otherwise.</dd>
+</dl>
+</div></blockquote>
+<blockquote>
+<div>It is possible that the priority queue contains elements but
+is empty. In this case, all elements in the priority queue are
+invalid elements.</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="priority_queue.PriorityQueue.pop">
+<code class="descname">pop</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/priority_queue.html#PriorityQueue.pop"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#priority_queue.PriorityQueue.pop" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div><dl class="docutils">
+<dt>Node</dt>
+<dd>The node with the minimum priority value.</dd>
+</dl>
+</div></blockquote>
+<blockquote>
+<div><dl class="docutils">
+<dt>IndexError</dt>
+<dd>If the priority queue was empty or did not have any valid
+elements.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="method">
+<dt id="priority_queue.PriorityQueue.push">
+<code class="descname">push</code><span class="sig-paren">(</span><em>priority</em>, <em>node</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/priority_queue.html#PriorityQueue.push"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#priority_queue.PriorityQueue.push" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pushes a node into the priority queue.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>priority: int</dt>
+<dd>The priority of the entry.</dd>
+<dt>node: Node</dt>
+<dd>The node to be pushed.</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+<div class="section" id="class-helper">
+<h3>class Helper<a class="headerlink" href="#class-helper" title="Permalink to this headline">¶</a></h3>
+<dl class="class">
+<dt id="problem.Helper">
+<em class="property">class </em><code class="descclassname">problem.</code><code class="descname">Helper</code><a class="reference internal" href="_modules/problem.html#Helper"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper" title="Permalink to this definition">¶</a></dt>
+<dd><p>This class provides the methods used to control TurtleBot.</p>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">init_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_init_state</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="method">
+<dt id="problem.Helper.get_actions">
+<code class="descname">get_actions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_actions"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_actions" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns the list of all actions that a TurtleBot can perform.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of actions</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list(str)</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">possible_actions</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_actions</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The code calling this API should check if the actions are applicable from the current state or not.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.get_goal_state">
+<code class="descname">get_goal_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_goal_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_goal_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls returns the goal state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Goal state</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#problem.State" title="problem.State">State</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">()</span>
+<span class="n">goal_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_goal_state</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">initial_state</span> <span class="o">==</span> <span class="n">goal_state</span><span class="p">:</span>
+    <span class="nb">print</span> <span class="s2">&quot;TurtleBot is already at Goal&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The default orientation returnded is EAST. Any piece of code using this method should ignore the orientation to check for goal state.</p>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.get_initial_state">
+<code class="descname">get_initial_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_initial_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_initial_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls get_initial_state service to recive the initial state of the turtlebot.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">Initial state of the TurtleBot</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#problem.State" title="problem.State">State</a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.get_successor">
+<code class="descname">get_successor</code><span class="sig-paren">(</span><em>curr_state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.get_successor"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.get_successor" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls get_successor service with current state as input and receives a dictionary as output. Possible actions are key to this dictionary and the value of each action is the state that can be reached by applying that action and the corresponding cost.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>curr_state</strong> (<a class="reference internal" href="#problem.State" title="problem.State"><em>State</em></a>) – current state of the TurtleBot</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">An <strong>ordered</strong> dictionary of actions {action_i : (state_i, cost_i)} such that applying action_i on curr_state results in state_i and it incurs a cost cost_i.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">OrderedDict {str: tuple(<a class="reference internal" href="#problem.State" title="problem.State">State</a>, float)}</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">()</span>
+<span class="n">possible_successors_dict</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_successor</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p>Process the output of this function in the same order it is returned. If you need to break ties between multiple nodes, use the dictionary element that appears earlier in the dictionary returned by get_successor(). Since this is an ordered dictionary, the order will be preserved unlike normal python dictionary.</p>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd>Assume that a call to get_successor(initial_state) returns {a1: (s1, 2), a2: (s2, 2)}. Now we have 2 nodes in fringe with equal cost, so we will choose <strong>a1</strong> for expansion as it appears before a2 in the dictionary.</dd>
+</dl>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="problem.Helper.is_goal_state">
+<code class="descname">is_goal_state</code><span class="sig-paren">(</span><em>state</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/problem.html#Helper.is_goal_state"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#problem.Helper.is_goal_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function calls is_goal_state service to check if the current state is the goal state or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>state</strong> (<a class="reference internal" href="#problem.State" title="problem.State"><em>State</em></a>) – current state of the TurtleBot</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">1 if input state is the goal state, 0 otherwise</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body">ServiceException: When call to rospy fails.</td>
+</tr>
+</tbody>
+</table>
+<dl class="docutils">
+<dt>Example:</dt>
+<dd><div class="first last highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">problem</span> <span class="kn">import</span> <span class="n">Helper</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="n">h</span> <span class="o">=</span> <span class="n">Helper</span><span class="p">()</span>
+<span class="n">initial_state</span> <span class="o">=</span> <span class="n">h</span><span class="o">.</span><span class="n">get_initial_state</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="n">h</span><span class="o">.</span><span class="n">is_goal_state</span><span class="p">(</span><span class="n">initial_state</span><span class="p">)</span>
+    <span class="nb">print</span> <span class="s2">&quot;TurtleBot is already at Goal&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="Welcome to CSE 571 Spring 2022 - Programming Project 1!" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, <a href="https://aair-lab.github.io">AAIR Lab</a>, <a href="https://asu.edu">ASU</a>.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(false);
+      });
+  </script> 
+
+</body>
+</html>

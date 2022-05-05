@@ -1,0 +1,21 @@
+Dimension, Obstacles, Seed, Algorithm, Time, Nodes Expanded, Plan Length, Error, Plan, Env
+4x4, 2, 200, bfs, 1.44, 347, 14, None, MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF, canWorld
+4x4, 2, 200, ucs, 1.27, 312, 14, None, MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF, canWorld
+4x4, 2, 200, gbfs, 0.06, 15, 14, None, MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF, canWorld
+4x4, 2, 200, astar, 0.76, 180, 14, None, MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF, canWorld
+4x4, 2, 200, custom-astar, 1.50, 347, 14, None, MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF, canWorld
+8x8, 12, 200, bfs, 0.77, 179, 11, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_TurnCCW_MoveF, canWorld
+8x8, 12, 200, ucs, 0.98, 243, 11, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_TurnCCW_MoveF, canWorld
+8x8, 12, 200, gbfs, 0.11, 27, 13, None, TurnCCW_MoveF_MoveF_MoveF_TurnCW_MoveF_TurnCCW_MoveF_MoveF_TurnCCW_MoveF_TurnCCW_MoveF, canWorld
+8x8, 12, 200, astar, 0.54, 134, 11, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_TurnCCW_MoveF, canWorld
+8x8, 12, 200, custom-astar, 0.72, 179, 11, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_TurnCCW_MoveF, canWorld
+3x6, 0, 200, bfs, 1.84, 443, 24, None, MoveF_TurnCCW_MoveF_MoveF_TurnCW_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_TurnCW_MoveF_MoveF_MoveF, cafeWorld
+3x6, 0, 200, ucs, 1.93, 471, 24, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCW_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_TurnCCW_MoveF_TurnCW_MoveF_MoveF_MoveF, cafeWorld
+3x6, 0, 200, gbfs, 0.16, 38, 26, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCW_MoveF_TurnCCW_MoveF_TurnCW_MoveF_TurnCCW_MoveF_MoveF_TurnCCW_MoveF_TurnCW_MoveF_MoveF_MoveF, cafeWorld
+3x6, 0, 200, astar, 1.72, 408, 24, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCW_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_TurnCCW_MoveF_TurnCW_MoveF_MoveF_MoveF, cafeWorld
+3x6, 0, 200, custom-astar, 1.82, 443, 24, None, MoveF_TurnCCW_MoveF_MoveF_TurnCW_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_TurnCW_MoveF_MoveF_MoveF, cafeWorld
+3x6, 1, 200, bfs, 1.94, 465, 25, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCW_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_MoveF_TurnCW_MoveF_MoveF_MoveF, cafeWorld
+3x6, 1, 200, ucs, 1.98, 476, 25, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCW_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_TurnCCW_MoveF_MoveF_TurnCW_MoveF_MoveF_MoveF, cafeWorld
+3x6, 1, 200, gbfs, 0.18, 43, 27, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCW_MoveF_TurnCCW_MoveF_TurnCW_MoveF_TurnCCW_MoveF_MoveF_TurnCCW_MoveF_MoveF_TurnCW_MoveF_MoveF_MoveF, cafeWorld
+3x6, 1, 200, astar, 1.69, 408, 25, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCW_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_TurnCCW_MoveF_MoveF_TurnCW_MoveF_MoveF_MoveF, cafeWorld
+3x6, 1, 200, custom-astar, 1.90, 465, 25, None, MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_MoveF_TurnCW_MoveF_MoveF_TurnCCW_MoveF_MoveF_MoveF_MoveF_TurnCCW_MoveF_MoveF_TurnCW_MoveF_MoveF_MoveF, cafeWorld

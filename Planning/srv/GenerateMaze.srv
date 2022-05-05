@@ -1,0 +1,6 @@
+uint32 objtypes
+uint32 objcount
+uint32 seed
+string env
+---
+uint32 done

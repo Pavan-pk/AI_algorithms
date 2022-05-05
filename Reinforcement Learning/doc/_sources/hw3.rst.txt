@@ -1,0 +1,301 @@
+Homework 3 - Programming Section
+==================================
+
+Welcome to the Programming Project 3 for CSE 571 - Spring 2022!
+
+This section will test your understanding of Reinforcement Learning as covered in the class.
+
+
+=============================
+Late Submission Policy
+=============================
+
+Please refer to the syllabus on canvas for the late submission policy. 
+
+=================
+Grading
+=================
+
+1. [30 points] Implement the functions to compute Q-values (get_q_value) using Q-learning update rules, the function to compute cumulative reward (compute_cumulative_reward), and a function to calculate the decayed value for epsilon (get_epsilon) in qlearning.py.
+
+    
+2. [30 points] Compute a policy to organize books using Q-learning. Use an :math:`\epsilon`-greedy policy, which selects at each state, the best action according to current Q values with probability :math:`1 - \epsilon` and selects a random action with probability :math:`\epsilon`. Start with Q values as zero for all state-action pairs. 
+
+
+3. [20 points] Plot a graph for number of episodes (x-axis) v/s cumulative reward (y-axis) after performing Q-learning for those episodes. The environment must have books of 1 subject with 1 book of each size for each subject. Generate this plot for 500 episodes.
+
+
+
+Please refer to `instructions section <#instructions>`_ to understand what these tasks mean and how to setup the environment. It also includes a number of tips that will significantly simplify your task. 
+
+Follow the instructions strictly to ensure that your assignment can be graded by the auto-grader. 
+Name the zipped file as instructed. **Custom grading requests will not be entertained**.
+
+
+Instructions
+=================
+
+===================================
+Setting up **HW3** Folder
+===================================
+We assume that you have completed the setup as instructed either using the virtual machine file provided for this assignment or using the virtual machine for the previous assignment and the provided "hw3" zip directory placed at the instructed location.
+
+#. Make sure you place the unzipped hw3 zip file at ~/catkin_ws/src/.
+
+#. Change permission of all scripts to make them executable and install pip.
+
+    .. code-block:: bash
+    
+       chmod u+x ~/catkin_ws/src/hw3/scripts/*.py && chmod u+x ~/catkin_ws/src/hw3/*.sh
+       sudo apt install python-pip
+
+#. Execute the env_setup.sh script. It will copy all the necessary files in respective folders. This script will fail if you don't have turtlebot folder in ~/catkin_ws/src. Refer Homework 0 setup if this is the case.
+
+    .. code-block:: bash
+
+       ~/catkin_ws/src/hw3/env_setup.sh && pip install tqdm
+
+=============================
+Environment Setting
+=============================
+
+**Environment 1 - bookWorld**
+
+Refer to the image below to see how a sample maze environment for bookWorld looks like. 
+The turtleBot has a basket on top of it. There are 4 books. Each book has a subject type and a size. There are 4 destination bins lying around in the environment. Each bin can accept books of a particular subject type and a particular size. 
+
+.. figure:: ./images/books_n_bins.png
+        :scale: 40 %
+        :alt: A sample maze
+
+**Environment 2 - cafeWorld**
+
+The image below shows an example of the cafe environment that the turtlebot3 robot operates in. There are two foods and 4 tables.
+
+.. figure:: ./images/food_n_tables.png
+        :scale: 40 %
+        :alt: A sample maze
+
+Some of the terms that we use throughout the assignment for both the environments are:
+
+#. **Objects and Goals:** In bookWorld, the objects are books, and the goals are bins. In cafeWorld, the objects are foods, and the goals are tables.
+
+#. **Types of Objects:** In bookWorld, there are books of two subject types. In cafeWorld, there are foods of two food types.
+
+#. **Sizes of Objects and Goals:** In bookWorld, there are books of two sizes - Large and Small, and bins of two sizes - Large and Small. In cafeWorld, there are foods of two sizes - Large and Small, and table of just one size.
+
+#. **Number of Object Types:** The number of distinct object types can be either 1 or 2 in both environments. 
+
+#. **Number of Objects:** This is the total number of objects of each type and each size in an environment. For each object type, an object of each size is created. E.g. for subject1 type in bookWorld, two books (one Large, one Small) are generated. So total number of objects in an environment is number of object types * number of objects per object type * number of sizes of object. The number of sizes of object is fixed 2 for both the environments.
+
+#. **Number of Goals:** The total number of goals generated is number of object types * number of sizes of object. E.g. For subject1 type in bookWorld, two bins (one Large, one Small) are generated as goals, and for a food type in cafeWorld, two tables are generated as goals.
+
+#. **Load Locations:** Load locations are the locations of turtlebot from which it can pick up an object.
+
+	.. note::
+		Grid Size is not used explicitly in this homework. It is dependent on the number of books in bookWorld and unused with cafeWorld.
+
+..
+	.. warning::
+		We gave multiple load locations because it is possible that one of the object's load location is obstructed by another object. Same can also happen for the goal location. In such a case the TurtleBot can go to the another load location and perform the pick or place operation so that it can clear the path.
+
+		**It is possible that both the load locations of a object or bin are obstructed.** In such a case no solution exists, and you have to regenerate a new problem. Reducing the # of objects avoids this problem.
+
+=============================
+Basic setup
+=============================
+
+#. Run the following to see basic help commands.
+
+    .. code-block:: bash
+
+        rosrun hw3 qlearning.py -h
+        usage: qlearning.py [-h] [--objtypes OBJTYPES] [--objcount OBJCOUNT]
+                            [--seed SEED] [--alpha ALPHA] [--gamma GAMMA]
+                            [--episodes EPISODES] [--max-steps MAX_STEPS]
+                            [--epsilon-task EPSILON_TASK] [--file-name FILE_NAME]
+                            [--env [bookWorld/cafeWorld]] [--clean] [--submit]
+
+        optional arguments:
+          -h, --help            show this help message and exit
+          --objtypes OBJTYPES   No of object types
+          --objcount OBJCOUNT   The number of objects for each type in the environment.
+          --seed SEED           The random seed
+          --alpha ALPHA         The learning rate.
+          --gamma GAMMA         The discount factor.
+          --episodes EPISODES   The total number of episodes.
+          --max-steps MAX_STEPS
+                                  The max. steps per episode.
+          --epsilon-task EPSILON_TASK
+                                  The epsilon task to use.
+          --file-name FILE_NAME
+                                  Store results in <file> in the project root directory.
+          --env [bookWorld/cafeWorld]
+                                  Choose environment b/w cafeWorld and bookWorld
+          --clean               Truncate output file
+          --submit              Run submission for the epsilon-task
+
+=============================
+Task 1
+=============================
+
+Your task is to complete the following functions in **qlearning.py**
+
+#. Complete the **get_q_value()** function to compute Q-values using Q-learning update rules in qlearning.py.
+
+    .. note::
+            Use the following equation to perform updates to the Q values.
+
+            :math:`Q(s,a) = (1- \alpha) Q(s,a) + \alpha \; [R(s,a,s') + \gamma \; \underset{a'}{max} \, Q(s',a')]`
+
+
+            You can use test_q_values.csv in the root directory to validate whether your implementation of Q-learning is correct. It contains the expected values for several different combinations of arguments (rounded off to 2 decimal places).
+
+#. Complete the **compute_cumulative_reward()** function to compute cumulative reward in qlearning.py.
+
+	.. note::
+		Use the following equation to perform cumulative reward.
+
+		:math:`R_{cumulative} = R_{cumulative} + \gamma^{step} R(s,a,s')`
+
+
+        You can use test_cumulative_Rewards.csv in the root directory to validate whether your implementation of cumulative reward computation is correct. It contains the expected values for several different combinations of arguments (rounded off to 2 decimal places).
+
+
+#. Compute a decayed value for epsilon by completing the code for epsilon_task == 2 in **get_epsilon()** found in qlearning.py. The decay routine should reduce the current epsilon value by 1%. The minimum value that the function returns must be 0.01.
+    
+.. note::
+        You can use test_epsilon_task_2.csv in the root directory to validate whether your implementation of epsilon value computation is correct. It contains the expected values for several different combinations of arguments.
+
+	|
+
+=============================
+Task 2
+=============================
+
+#. Complete the implementation of **learn()** function in qlearning.py. In this function you are supposed to compute a policy to organize books using Q-learning. Use an :math:`\epsilon`-greedy policy, which selects at each state, the best action according to current Q values with probability :math:`1 - \epsilon` and selects a random action with probability :math:`\epsilon`. Start with Q values as zero for all state-action pairs. 
+
+#. Run the following command to generate the required submission files.
+    
+    .. code-block:: bash
+    
+        rosrun hw3 qlearning.py --epsilon-task 2 --submit
+
+    .. note::
+
+        Ignore the value of 1 for --epsilon-task parameter. We will not be using that in this course.
+
+#. You should be able to see a progress bar in the terminal. If you do not see a pogress bar within few mins of running the rosrun command, run the following command to kill the running processes and rerun the above rosrun command.
+    
+    .. code-block:: bash
+
+        ~/catkin_ws/src/hw3/hw3_kill.sh
+
+#. The rosrun command will generate a file called task2.csv in the hw3 directory.
+
+=============================
+Task 3
+=============================
+
+#. Using task2.csv generated in the previous task, create a plot of episodes (x-axis) vs. cumulative reward for each environment.
+#. Please name your plot as task3.png (Note that it must be in PNG format). 
+#. Place the file directly inside the hw3 directory so that it can be found easily by the grader to avoid losing points.
+
+
+=============================
+Submission configuration
+=============================
+
+    .. code-block:: bash
+
+        objtypes=1
+        objcount=1
+        seed=32
+        alpha=0.3
+        gamma=0.9
+        episodes=500
+        max_steps=500
+
+========================
+Submission Instructions
+========================
+
+#. Place qlearning.py, task2.csv, and task3.png files in a directory named in the format lastname_firstname_asu# and zip it. Ensure the zip file is named as lastname_firstname_asu#.zip. 
+
+#. Strictly follow the above instruction exactly as mentioned to avoid losing points. Ensure all the 3 files are present in the zip file if you have solved all the tasks successfully. 
+
+#. Submit this zip file on Canvas.
+
+=============================
+Environment Visualization
+=============================
+
+#.  Unlike the previous two assignments, this homework does not contain the visualization through Gazebo. However, you can view the environment generated by running the following command from the root of the directory after running `qlearning.py`
+
+    .. code-block:: bash
+
+        gazebo worlds/maze.sdf
+
+=============================
+Tips and Suggestions
+=============================
+
+#. You only need look at qlearning.py (and the slides) to finish this task!
+#. The provided validator files can help you verify your solution. Note however that some corner cases could be missing.
+#. It does take a fair bit of time to run 500 episodes for two environments so plan on finishing 4-5 days before the deadline. Please take this seriously.
+
+=============================
+Watch it learn
+=============================
+
+Although there is no visualization through Gazebo, we can leverage ROS topics to view the status of the robot in real time.
+
+While `qlearning.py` runs, open a new terminal and run the following command:
+
+    .. code-block:: bash
+
+        rostopic echo /status
+
+This will print a stream of action related information from the robot directly to the console as the it executes the next best action. Notice the no-ops (failure to transition to a different state) and reason how this might affect its cumulative reward in an episode. 
+
+If your implementation is correct, you will see the number of steps (actions) taken per episode reduce with sufficient episodes.
+
+Episodes are delimited by the string 
+
+    .. code-block:: bash
+
+        +++++++++++++++++++++Reset world++++++++++++++++++++++
+
+The `action_config.json` file contains the actions available to the robot and the corresponding rewards.
+
+
+Browse through the source code of the files above to get a better idea of the
+expectations.
+
+
+API
+=============================
+
+This API covers only the part of code that you will have to use to complete this Project. You are free to explore the code by looking into each file separately, but do not change anything other than qlearning.py.
+
+====================================================
+class State
+====================================================
+.. moduleauthor:: AAIR Lab, ASU <aair.lab@asu.edu>
+
+.. automodule:: problem
+	:noindex:
+
+.. autoclass:: State
+   :members:
+
+====================================================
+class Helper
+====================================================
+.. moduleauthor:: AAIR Lab, ASU <aair.lab@asu.edu>
+
+.. automodule:: problem
+	:noindex:
+
+.. autoclass:: Helper
+   :members:
