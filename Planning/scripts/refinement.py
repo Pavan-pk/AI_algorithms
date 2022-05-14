@@ -107,10 +107,9 @@ class Refine:
             
             # This step performs downward refinement.
             if(high_level_action[0] == "move"):
-                '''
-                YOUR CODE HERE
-                '''
-
+                paths, next_state, can_move = self.get_path(current_state, self.get_load_locations(high_level_action[3]))
+                actions.append(("move", paths, [next_state.x, next_state.y, next_state.orientation]))
+                current_state = next_state
             elif(high_level_action[0] == "pick"):
                 obj = high_level_action[1]
                 actions.append(("pick", obj))
@@ -179,7 +178,7 @@ class Refine:
 
         for goal_state in goal_states:
         
-            action_list, nodes_expanded = search.search(init_state, goal_state, self.helper, "gbfs")
+            action_list, nodes_expanded = search.search(init_state, goal_state, self.helper, "astar")
             if action_list is not None:
 
                 return action_list, goal_state, True

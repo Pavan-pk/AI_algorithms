@@ -130,7 +130,7 @@ class FD(Planner, object):
         command = utils.ROOT_PATH + "/planners/FD/fast-downward.py "
         command += "--plan-file /tmp/plan.txt "
         command += "%s %s " % (domain_filepath, problem_filepath)
-        command += "--search \"lazy_greedy([ff()], preferred=[ff()])\""
+        command += "--search \"lazy_wastar([ff()], preferred=[ff()])\""
 
         return command
         
