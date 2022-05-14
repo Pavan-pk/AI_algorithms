@@ -7,7 +7,7 @@ Implemented Breath First Search, Uniform Cost Search, Greedy best first search, 
 <img width="792" alt="image" src="https://user-images.githubusercontent.com/14234116/167031367-b7f2e268-5b8a-4cbb-9981-6eff251c7fca.png">
 
 # Planning
-Planning Domain Definition Language for actions and goal declarations.
+Planning Domain Definition Language for actions and goal definitions.
 
 # Reinforcement learing
 Implementation of Q learning for finding optimal plan for cafeWorld and bookWorld environment.
