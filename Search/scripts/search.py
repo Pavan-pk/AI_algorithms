@@ -10,6 +10,7 @@ __maintainers__ = ["Pulkit Verma", "Karthik Nelapati"]
 __contact__ = "aair.lab@asu.edu"
 __docformat__ = 'reStructuredText'
 
+from fileinput import close
 import os
 import time
 import rospy
@@ -26,6 +27,8 @@ from server import generate_maze
 from utils import initialize_ros
 from priority_queue import PriorityQueue
 from server import initialize_search_server
+
+from collections import deque
 
 SUBMIT_FILENAME = "hw1_results.csv"
 SUBMIT_SEARCH_TIME_LIMIT = 300
@@ -75,10 +78,7 @@ def compute_g(algorithm, node, goal_state):
         raise NotImplementedError
 
     if algorithm == "astar":
-        '''
-        YOUR CODE HERE
-        '''
-        raise NotImplementedError
+        return node.get_total_action_cost()
 
     elif algorithm == "gbfs":
         '''
@@ -93,10 +93,7 @@ def compute_g(algorithm, node, goal_state):
         raise NotImplementedError
 
     elif algorithm == "custom-astar":
-        '''
-        YOUR CODE HERE
-        '''
-        raise NotImplementedErrors
+        return node.get_total_action_cost()
 
     # Should never reach here.
     assert False
@@ -140,11 +137,7 @@ def f_ucs(node, goal_state):
                 The f-value for the node.
     """
 
-    '''
-    YOUR CODE HERE
-    '''
-
-    raise NotImplementedError
+    return node.get_total_action_cost()
 
 
 def f_astar(node, goal_state):
@@ -168,8 +161,10 @@ def f_astar(node, goal_state):
     YOUR CODE HERE
     '''
 
-    raise NotImplementedError
+    h = (abs(node.get_state().get_x() - goal_state.get_x()) + abs(node.get_state().get_y() - goal_state.get_y()))
+    g = compute_g('astar', node, goal_state)
 
+    return h + g
 
 
 def f_gbfs(node, goal_state):
@@ -189,12 +184,8 @@ def f_gbfs(node, goal_state):
                 The f-value for the node.
     """
 
-    '''
-    YOUR CODE HERE
-    '''
 
-    raise NotImplementedError
-
+    return (abs(node.get_state().get_x() - goal_state.get_x()) + abs(node.get_state().get_y() - goal_state.get_y()))
 
 
 def f_custom_astar(node, goal_state):
@@ -214,11 +205,37 @@ def f_custom_astar(node, goal_state):
                 The f-value for the node.
     """
 
-    '''
-    YOUR CODE HERE
-    '''
 
-    raise NotImplementedError
+    node_x, node_y = node.get_state().get_x(), node.get_state().get_y()
+    goal_x, goal_y = goal_state.get_x(), goal_state.get_y()
+
+    '''
+    EXPLANATION:
+        1. Manhattan distance is just the sum of displacement with respect to each x and y axis.
+        2. As this problem is on a 2d plane and we can consider each point of robot (x, y) as a point in
+            the 2d plane. In this case the true distance between 2 points is given by Euclidean distance,
+            i.e if (x1, y1) and (x2, y2) are 2 points in the graph, the straight line distance is 
+            Square root of[(x1-x2)^2 + (y1-y2)^2]. This formula should give the true distance between 2 points
+            and hence the idea behind my trail.
+        3. Is Euclidean distance admissible? We can see that between any 2 points, Maximum value of euclidean cannot exceed
+            Manhattan distance.
+            Proof:
+                let
+                X be value of (x1-x2)
+                Y be value of (y1-y2)
+                therefore, 
+                X + Y >= sqrt(X^2 + Y^2)
+                (X+Y)^2 >= X^2 + Y^2
+                X^2 + Y^2 + 2XY >= X^2 + Y^2
+
+            Manhattan distance = Euclidean when X or Y is 0.
+            Hence, As Manhattan distance is admissible, Euclidean is admissible too.
+        4. The factor of 2 was decided when fine tuning the distance formula, idea was that the turn operation is 2 costs twice
+            as much the move operation. and to move along diagnal path we have to turn after every step.
+    '''
+    g = compute_g('custom-astar', node, goal_state)
+    
+    return g + 2*(((node_x-goal_x)**2 + (node_y-goal_y)**2)**(1.0/2.0))
 
 
 
@@ -268,20 +285,33 @@ def graph_search(algorithm, time_limit):
     # total_nodes_expanded maintains the total number of nodes expanded during the search
     total_nodes_expanded = 0
     time_limit = time.time() + time_limit
-    
-    '''
-    YOUR CODE HERE
 
-    Your code for graph search should populate action_list and set total_nodes_expanded
-    The automated script will verify their values
-
-    In addition to this you must also write code for:
-    1. f_ucs
-    2. f_gbfs
-    3. f_astar
-    4. compute_g
-    5. f_custom_astar (If attempting bonus question)
-    '''
+    closed = set()
+    reached = None
+    if helper.is_goal_state(init_state):
+        return action_list, total_nodes_expanded
+    while not priority_queue.is_empty() and not reached:
+        node = priority_queue.pop()
+        if node.get_state() in closed: continue
+        if helper.is_goal_state(node.get_state()):
+            reached = node
+            break
+        closed.add(node.get_state())
+        successors = helper.get_successor(node.get_state())
+        for action in successors:
+            if is_invalid(successors[action][0]) : continue
+            succ_node = Node(successors[action][0],
+                                node,
+                                node.get_depth()+1,
+                                action,
+                                successors[action][1])
+            priority_queue.push(f_value[algorithm](succ_node, goal_state), succ_node)
+        total_nodes_expanded += 1
+    while reached:
+        action_list.append(reached.get_action())
+        reached = reached.get_parent()
+    action_list.reverse()
+    action_list = action_list[1:]
 
     if time.time() >= time_limit:
         raise SearchTimeOutError("Search timed out after %u secs." % (time_limit))
