@@ -1,0 +1,245 @@
+INFO     Running translator.
+INFO     translator stdin: None
+INFO     translator time limit: None
+INFO     translator memory limit: None
+INFO     translator command line string: /usr/bin/python /home/pavan/catkin_ws/src/hw2/planners/FD/builds/release/bin/translate/translate.py /home/pavan/catkin_ws/src/hw2/domain_cafeWorld.pddl /home/pavan/catkin_ws/src/hw2/problem.pddl --sas-file output.sas
+Parsing...
+Parsing: [0.000s CPU, 0.002s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Trivial rules: Converted to facts.
+Normalizing Datalog program: [0.000s CPU, 0.002s wall-clock]
+Preparing model... [0.000s CPU, 0.001s wall-clock]
+Generated 41 rules.
+Computing model... [0.000s CPU, 0.005s wall-clock]
+567 relevant atoms
+363 auxiliary atoms
+930 final queue length
+1286 total queue pushes
+Completing instantiation... [0.010s CPU, 0.004s wall-clock]
+Instantiating: [0.010s CPU, 0.013s wall-clock]
+Computing fact groups...
+Finding invariants...
+13 initial candidates
+Finding invariants: [0.000s CPU, 0.002s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+42 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.003s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.001s wall-clock]
+Translating task: [0.010s CPU, 0.007s wall-clock]
+272 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+0 operators removed
+0 axioms removed
+25 propositions removed
+Detecting unreachable propositions: [0.000s CPU, 0.003s wall-clock]
+Reordering and filtering variables...
+43 of 43 variables necessary.
+12 of 13 mutex groups necessary.
+308 of 308 operators necessary.
+13 of 13 axiom rules necessary.
+Reordering and filtering variables: [0.000s CPU, 0.001s wall-clock]
+Translator variables: 43
+Translator derived variables: 13
+Translator facts: 109
+Translator goal facts: 1
+Translator mutex groups: 12
+Translator total mutex groups size: 36
+Translator operators: 308
+Translator axioms: 13
+Translator task size: 1790
+Translator peak memory: 25964 KB
+Writing output... [0.000s CPU, 0.002s wall-clock]
+Done! [0.020s CPU, 0.032s wall-clock]
+Warning: name clash between type and predicate u'food_type'.
+Interpreting as predicate in conditions.
+
+
+translate exit code: 0
+INFO     Running search (release).
+INFO     search stdin: output.sas
+INFO     search time limit: None
+INFO     search memory limit: None
+INFO     search command line string: /home/pavan/catkin_ws/src/hw2/planners/FD/builds/release/bin/downward --search 'lazy_wastar([ff()], preferred=[ff()])' --internal-plan-file /tmp/plan.txt < output.sas
+reading input... [t=0.000127209s]
+done reading input! [t=0.000953167s]
+Simplifying 629 unary operators... done! [629 unary operators]
+time to simplify: 0.00023675s
+Initializing additive heuristic...
+Initializing FF heuristic...
+Simplifying 629 unary operators... done! [629 unary operators]
+time to simplify: 0.000199167s
+Initializing additive heuristic...
+Initializing FF heuristic...
+Building successor generator...done! [t=0.00276946s]
+peak memory difference for successor generator creation: 0 KB
+time for successor generation creation: 7.4583e-05s
+Variables: 43
+FactPairs: 109
+Bytes per state: 8
+Conducting lazy best first search, (real) bound = 2147483647
+New best heuristic value for ff: 40
+[g=0, 1 evaluated, 0 expanded, t=0.00292588s, 8128 KB]
+Initial heuristic value for ff: 40
+Initial heuristic value for ff: 40
+New best heuristic value for ff: 39
+[g=1, 2 evaluated, 1 expanded, t=0.00303104s, 8128 KB]
+New best heuristic value for ff: 38
+[g=2, 18 evaluated, 17 expanded, t=0.00333475s, 8128 KB]
+New best heuristic value for ff: 37
+[g=3, 30 evaluated, 29 expanded, t=0.00361179s, 8128 KB]
+New best heuristic value for ff: 36
+[g=4, 210 evaluated, 209 expanded, t=0.00707058s, 8128 KB]
+New best heuristic value for ff: 35
+[g=6, 390 evaluated, 389 expanded, t=0.0107202s, 8128 KB]
+New best heuristic value for ff: 34
+[g=7, 534 evaluated, 533 expanded, t=0.0135945s, 8128 KB]
+New best heuristic value for ff: 33
+[g=8, 2382 evaluated, 2381 expanded, t=0.0439974s, 8656 KB]
+New best heuristic value for ff: 32
+[g=10, 3594 evaluated, 3593 expanded, t=0.0758165s, 8656 KB]
+New best heuristic value for ff: 31
+[g=11, 4452 evaluated, 4451 expanded, t=0.0942086s, 8656 KB]
+New best heuristic value for ff: 30
+[g=12, 13032 evaluated, 13031 expanded, t=0.215518s, 10796 KB]
+New best heuristic value for ff: 29
+[g=13, 15671 evaluated, 15670 expanded, t=0.297736s, 11324 KB]
+New best heuristic value for ff: 28
+[g=14, 17872 evaluated, 17871 expanded, t=0.330349s, 11324 KB]
+New best heuristic value for ff: 27
+[g=15, 17908 evaluated, 17907 expanded, t=0.330995s, 11324 KB]
+New best heuristic value for ff: 26
+[g=16, 18304 evaluated, 18303 expanded, t=0.336193s, 11324 KB]
+New best heuristic value for ff: 25
+[g=18, 21524 evaluated, 21523 expanded, t=0.407199s, 11324 KB]
+New best heuristic value for ff: 24
+[g=19, 45536 evaluated, 45535 expanded, t=0.73622s, 16420 KB]
+New best heuristic value for ff: 23
+[g=20, 59360 evaluated, 59359 expanded, 36 reopened, t=1.04342s, 18776 KB]
+New best heuristic value for ff: 22
+[g=22, 68576 evaluated, 68575 expanded, 36 reopened, t=1.28s, 18776 KB]
+New best heuristic value for ff: 21
+[g=23, 110901 evaluated, 110900 expanded, 36 reopened, t=1.8606s, 24844 KB]
+New best heuristic value for ff: 20
+[g=24, 150166 evaluated, 150165 expanded, 167 reopened, t=2.61235s, 29604 KB]
+New best heuristic value for ff: 19
+[g=25, 155794 evaluated, 155793 expanded, 167 reopened, t=2.73431s, 29736 KB]
+New best heuristic value for ff: 18
+[g=26, 158002 evaluated, 158001 expanded, 167 reopened, t=2.7707s, 29872 KB]
+New best heuristic value for ff: 17
+[g=27, 158038 evaluated, 158037 expanded, 167 reopened, t=2.77139s, 29872 KB]
+New best heuristic value for ff: 16
+[g=28, 158290 evaluated, 158289 expanded, 167 reopened, t=2.77466s, 29872 KB]
+New best heuristic value for ff: 15
+[g=30, 165022 evaluated, 165021 expanded, 167 reopened, t=3.0553s, 29872 KB]
+New best heuristic value for ff: 14
+[g=31, 226114 evaluated, 226113 expanded, 167 reopened, t=3.87366s, 40320 KB]
+New best heuristic value for ff: 13
+[g=32, 238013 evaluated, 238012 expanded, 324 reopened, t=4.28728s, 41064 KB]
+New best heuristic value for ff: 12
+[g=34, 250217 evaluated, 250216 expanded, 324 reopened, t=4.52601s, 41064 KB]
+New best heuristic value for ff: 11
+[g=35, 297773 evaluated, 297772 expanded, 324 reopened, t=5.12917s, 44504 KB]
+New best heuristic value for ff: 10
+[g=36, 347021 evaluated, 347020 expanded, 324 reopened, t=5.93435s, 52532 KB]
+New best heuristic value for ff: 9
+[g=37, 350180 evaluated, 350179 expanded, 324 reopened, t=6.19148s, 52664 KB]
+New best heuristic value for ff: 8
+[g=38, 350505 evaluated, 350504 expanded, 324 reopened, t=6.19553s, 52664 KB]
+New best heuristic value for ff: 7
+[g=39, 350517 evaluated, 350516 expanded, 324 reopened, t=6.1957s, 52664 KB]
+New best heuristic value for ff: 6
+[g=40, 350553 evaluated, 350552 expanded, 324 reopened, t=6.19613s, 52664 KB]
+New best heuristic value for ff: 5
+[g=42, 353829 evaluated, 353828 expanded, 324 reopened, t=6.24825s, 52664 KB]
+New best heuristic value for ff: 4
+[g=43, 375885 evaluated, 375884 expanded, 324 reopened, t=6.51905s, 53588 KB]
+New best heuristic value for ff: 3
+[g=44, 377265 evaluated, 377264 expanded, 324 reopened, t=6.60813s, 53588 KB]
+New best heuristic value for ff: 2
+[g=46, 378801 evaluated, 378800 expanded, 324 reopened, t=6.63319s, 53588 KB]
+New best heuristic value for ff: 1
+[g=47, 383025 evaluated, 383024 expanded, 324 reopened, t=6.68274s, 53720 KB]
+Solution found!
+Actual search time: 6.6944s [t=6.69728s]
+move tbot3 tbot3_init_loc hamburger_1_iloc (1)
+pick hamburger_1 tbot3 hamburger_1_iloc (1)
+move tbot3 hamburger_1_iloc table_1_iloc (1)
+place hamburger_1 tbot3 table_1 table_1_iloc small hamburger (1)
+move tbot3 table_1_iloc hamburger_3_iloc (1)
+pick hamburger_3 tbot3 hamburger_3_iloc (1)
+move tbot3 hamburger_3_iloc table_1_iloc (1)
+place hamburger_3 tbot3 table_1 table_1_iloc small hamburger (1)
+move tbot3 table_1_iloc hamburger_5_iloc (1)
+pick hamburger_5 tbot3 hamburger_5_iloc (1)
+move tbot3 hamburger_5_iloc table_1_iloc (1)
+place hamburger_5 tbot3 table_1 table_1_iloc small hamburger (1)
+move tbot3 table_1_iloc hamburger_2_iloc (1)
+pick hamburger_2 tbot3 hamburger_2_iloc (1)
+move tbot3 hamburger_2_iloc table_2_iloc (1)
+place hamburger_2 tbot3 table_2 table_2_iloc large hamburger (1)
+move tbot3 table_2_iloc hamburger_4_iloc (1)
+pick hamburger_4 tbot3 hamburger_4_iloc (1)
+move tbot3 hamburger_4_iloc table_2_iloc (1)
+place hamburger_4 tbot3 table_2 table_2_iloc large hamburger (1)
+move tbot3 table_2_iloc hamburger_6_iloc (1)
+pick hamburger_6 tbot3 hamburger_6_iloc (1)
+move tbot3 hamburger_6_iloc table_2_iloc (1)
+place hamburger_6 tbot3 table_2 table_2_iloc large hamburger (1)
+move tbot3 table_2_iloc pizza_10_iloc (1)
+pick pizza_10 tbot3 pizza_10_iloc (1)
+move tbot3 pizza_10_iloc table_4_iloc (1)
+place pizza_10 tbot3 table_4 table_4_iloc large pizza (1)
+move tbot3 table_4_iloc pizza_12_iloc (1)
+pick pizza_12 tbot3 pizza_12_iloc (1)
+move tbot3 pizza_12_iloc table_4_iloc (1)
+place pizza_12 tbot3 table_4 table_4_iloc large pizza (1)
+move tbot3 table_4_iloc pizza_8_iloc (1)
+pick pizza_8 tbot3 pizza_8_iloc (1)
+move tbot3 pizza_8_iloc table_4_iloc (1)
+place pizza_8 tbot3 table_4 table_4_iloc large pizza (1)
+move tbot3 table_4_iloc pizza_11_iloc (1)
+pick pizza_11 tbot3 pizza_11_iloc (1)
+move tbot3 pizza_11_iloc table_3_iloc (1)
+place pizza_11 tbot3 table_3 table_3_iloc small pizza (1)
+move tbot3 table_3_iloc pizza_7_iloc (1)
+pick pizza_7 tbot3 pizza_7_iloc (1)
+move tbot3 pizza_7_iloc table_3_iloc (1)
+place pizza_7 tbot3 table_3 table_3_iloc small pizza (1)
+move tbot3 table_3_iloc pizza_9_iloc (1)
+pick pizza_9 tbot3 pizza_9_iloc (1)
+move tbot3 pizza_9_iloc table_3_iloc (1)
+place pizza_9 tbot3 table_3 table_3_iloc small pizza (1)
+Plan length: 48 step(s).
+Plan cost: 48
+Expanded 383288 state(s).
+Reopened 324 state(s).
+Evaluated 383289 state(s).
+Evaluations: 765929
+Generated 6207296 state(s).
+Dead ends: 0 state(s).
+Number of registered states: 382965
+Int hash set load factor: 382965/524288 = 0.730448
+Int hash set resizes: 19
+Search time: 6.69441s
+Total time: 6.69729s
+Solution found.
+Peak memory: 53720 KB
+Remove intermediate file output.sas
+
+search exit code: 0
