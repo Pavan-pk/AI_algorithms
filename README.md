@@ -9,6 +9,10 @@ Implemented Breath First Search, Uniform Cost Search, Greedy best first search, 
 # Planning
 Planning Domain Definition Language for actions and goal definitions.
 
+High level plan can be viewed in planner_output.log
+
+Refined plan from higher level to lower level bot commands in results.csv
+
 # Reinforcement learing
 Implementation of Q learning for finding optimal plan for cafeWorld and bookWorld environment.
 <img width="1067" alt="image" src="https://user-images.githubusercontent.com/14234116/167031450-7ecf0fd3-3616-4f8b-81d6-83e737952ff9.png">
